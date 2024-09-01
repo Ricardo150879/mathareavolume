@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang= "en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Space: Area and Volume</title>
+<style>
+body {
+      //font-family: Arial;
+      justify-content: left;
+      align-items: left;
+      //min-height: 100vh;
+      background: azure;
+}
+
+h1 {
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    color: navy;
+}
+
+h2 {
+    text-align: left;
+    font-family: "Times New Roman", Times, serif;
+    color: navy;
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+/* Style the close button */
+.topright {
+  float: right;
+  cursor: pointer;
+  font-size: 28px;
+}
+
+.topright:hover {color: red;}
+
+button {  
+  background-color: #ffff99; //#f9f1f1 #af799c    
+  border: none;  
+  //color: white;  
+  padding: 15px 32px;  
+  text-align: center;  
+  text-decoration: none;  
+  display: inline-block;  
+  font-size: 16px;  
+  margin: 4px 2px;  
+  cursor: pointer;  
+}
+
+
+table {
+       border: 5px solid black;
+}
+
+tr {
+  border: 5px solid black;
+  height: 30px; 
+  width: 30px;  
+  border-style: inset;
+  background-color: aqua;
+}
+
+td {
+  border: 5px solid black; 
+  height: 30px; 
+  width: 30px;  
+  border-style: inset;
+  background-color: aqua;
+}
+
+.square {
+  width: 150px; /* Set the width */
+  height: 150px; /* Set the height (same as width for a square) */
+  background-color: #f0f0f0 ; /*  Add a background color */
+  border: 1px solid black; /* Add a border (optional) */
+  position: relative;
+  left: +5px;
+}
+
+.rectangle {
+  width: 200px; /* Set the width */
+  height: 100px; /* Set the height */
+  background-color: #f0f0f0; /* Add a background color */
+  border: 1px solid black; /* Add a border (optional) */
+  position: relative;
+  left: +5px;
+}
+
+.parallelogram {
+	width: 150px;
+	height: 100px;
+	transform: skew(20deg);
+	background-color: #f0f0f0;//background: rgb(9, 189, 212);
+        border: 1px solid black;
+        position: relative;
+        left: +25px;
+}
+
+.trapezoid {
+	width: 150px;
+	height: 100px;
+        transform: perspective(10px) rotateX(1deg);
+	background-color: #f0f0f0;//background: rgb(9, 189, 212);
+        border: 1px solid black;
+        position: relative;
+        left: +25px;
+}
+ 
+.triangle-up {
+  width: 0;
+  height: 0;
+  border-left: 100px solid transparent;
+  border-right: 100px solid transparent;
+  border-bottom: 150px solid black;
+  border-radius: 0;
+}
+
+.inner-triangle {
+  position: relative;
+  top: 0.5px;
+  left: -99px;
+  width: 0;
+  height: 0;
+  border-left: 99px solid transparent;
+  border-right: 99px solid transparent;
+  border-bottom: 149px solid #f0f0f0;
+  border-radius: 0;
+}
+
+.circleBase { 
+        border-radius: 50%;
+        //Pi = 3.141592653589793238462643383279502884197
+        /*3,14159265358979323846…, that is, an infinite sequence of digits.*/
+}
+.circle {
+	width: 150px;
+	height: 150px;
+	background-color: #f0f0f0;//background: rgb(9, 189, 212);
+        border: 1px solid black;
+        position: relative;
+        left: +5px;
+}
+
+.ellipse {
+	width: 150px;
+	height: 100px;
+        border-radius: 50%;
+	background-color: #f0f0f0;//background: rgb(9, 189, 212);
+        border: 1px solid black;
+        position: relative;
+        left: +5px;
+}
+
+.mainDiv{
+  position: relative;
+  width: 206px;
+  height: 190px;
+  margin: 0px;
+  margin-top:100px;
+}
+.squarex{
+  width:100px;
+  height:100px;
+  background:#f0f0f0;
+  border:solid 1px #000000;
+  transform: skew(180deg,210deg);
+  position: absolute;
+  top: 43px;
+}
+.squarex2{
+  width:100px;
+  height:100px;
+  background:#f0f0f0;
+  border:solid 1px #000000;
+  transform: skew(180deg,150deg);
+  position: absolute;
+  left:102px;
+  top: 43px;
+}
+.squarex3{
+  width:114px;
+  height:100px;
+  background:#f0f0f0;
+  border:solid 1px #000000;
+  transform: rotate(150deg) translate(-40px, -16px) skew(30deg, 0deg);
+  position: absolute;
+  left: 0px;
+  top: -32px;
+}
+ 
+
+transform: rotate(150deg) translate(-40px, -16px) skew(30deg, 0deg);
+  position: absolute;
+  left: 0px;
+  top: -32px;
+}
+
+.conteiner {
+    display: none;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+@keyframes animate {
+	0% {
+		filter: hue-rotate(0deg);
+	}
+	100% {
+		filter: hue-rotate(360deg);
+	}
+}
+
+.container {
+	position: relative;
+	top: +90px;
+        left: +210px;
+	transform: skewY(-20deg);
+	animation: animate 5s linear infinite;
+	.cube {
+		position: relative;
+		z-index: 2;
+		&:nth-child(2) {
+			z-index: 1;
+			translate: -60px -60px;
+		}
+		&:nth-child(3) {
+			z-index: 3;
+			translate: 60px 60px;
+		}
+		div {
+			position: absolute;
+			display: flex;
+			flex-direction: column;
+			gap: 30px;
+			translate: calc(-70px * var(--x)) calc(-60px * var(--y));
+			span {
+				position: relative;
+				display: inline-block;
+				width: 50px;
+				height: 50px;
+				background: #dcdcdc;
+				z-index: calc(1 * var(--i));
+				transition: 1.5s;
+				&:hover {
+					transition: 0s;
+					background: #ef4149;
+					filter: drop-shadow(0 0 30px #ef4149);
+					&:before, 
+					&:after {
+						transition: 0s;
+						background: #ef4149;
+					}
+				}
+				&:before {
+					content: "";
+					position: absolute;
+					left: -40px;
+					width: 40px;
+					height: 100%;
+					background: #fff;
+					transform-origin: right;
+					transform: skewY(45deg);
+					transition: 1.5s;
+				}
+				&:after {
+					content: "";
+					position: absolute;
+					top: -40px;
+					left: 0px;
+					width: 100%;
+					height: 40px;
+					background: #f2f2f2;
+					transform-origin: bottom;
+					transform: skewX(45deg);
+					transition: 1.5s;
+				}
+			}
+		}
+	}
+}
+
+#cubetop {
+    width: 200px;
+    height: 40px;
+    background: #f0f0f0;
+    border: 1px solid black;
+    -webkit-transform:     
+        translateX(20px)
+        skew(-45deg, 0deg);
+}
+
+#cubeface {
+    width: 200px;
+    height: 60px;
+    background: #f0f0f0;
+    border: 1px solid black;
+    display:block;
+    float:left;
+}
+
+#cuberight {
+    width: 40px;
+    height: 60px;
+    background: #f0f0f0;
+    border: 1px solid black;
+    display:block;
+    float:left;
+    -webkit-transform:    
+        translateY(-20px)
+        skew(0deg, -45deg);
+}
+
+.tank{
+     position:relative;
+     margin:50px;
+}
+
+.tank .middle{
+    width:120px;
+    height:180px;
+    background-color:#f0f0f0;
+    position:absolute;
+}
+
+.tank .top{
+    width: 120px;
+    height: 50px;
+    background-color:#f0f0f0;
+    border: 1px solid black;
+    -moz-border-radius: 60px / 25px;
+    -webkit-border-radius: 60px / 25px;
+    border-radius: 60px / 25px;
+    position:absolute;
+    top:-25px;
+}
+
+.tank .bottom{
+    width: 120px;
+    height: 50px;
+    background-color:#f0f0f0;
+    border: 1px solid black;
+    -moz-border-radius: 60px / 25px;
+    -webkit-border-radius: 60px / 25px;
+    border-radius: 60px / 25px;
+    position:absolute;
+    top:155px;
+    box-shadow:0px 0px 10px rgba(0,0,0,0.75);
+}
+
+ 
+.cone {
+  height: 0;
+  width: 0;
+  border-left: 100px solid transparent; 
+  border-right: 100px solid transparent; 
+  border-bottom: 100px solid #f0f0f0; 
+  -moz-border-radius:50%;
+  -webkit-border-radius:50%;
+  border-radius: 50%;
+  box-shadow:10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+.sphere {
+  display: block;
+  border-radius: 100%;
+  height: 150px;
+  width: 150px;
+  margin: 0;
+  background: radial-gradient(circle at 100px 100px, #5cabff, #f0f0f0);
+  box-shadow:10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+</style>
+</head>
+<body>
+
+<div class="tab">
+  <button class="tablinks" onclick="openSpace(event, 'Area')" id="defaultOpen">Area</button>
+  <button class="tablinks" onclick="openSpace(event, 'Volume')">Volume</button>
+   <button class="tablinks" onclick="openSpace(event, 'Interaction')">Interaction</button>
+</div>
+
+<div id="Area" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+  <section>
+
+<h1>The study of space is the branch of science that analyzes space by reflecting on itself. Whereas, by entering the corresponding values of the appropriate unit of magnitude, we get the desired answers. Then, by scrolling down, you'll be able to infer the formulas from areas and volumes.</h1><br>
+
+<h1> Example of the sum of several smaller squares that fit inside the larger square = 64 Units.</h1>
+
+<table>
+  <tr>
+<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+</tr>
+<tr>
+<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+</tr>
+<tr>
+<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+</tr>
+<tr>
+<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+</tr>
+<tr>
+<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+</tr>
+<tr>
+<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+</tr>
+<tr>
+<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+</tr>
+<tr>
+<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+  </tr>
+</table>
+
+&#x1F4CC
+<h1>As a dimension, we can work with units mm², cm², m², Km² or any other unit of area.</h1>
+<div class="hr">
+<div class="square"></div>
+&#x1F447
+</div>
+<div class"hr">
+<h2> Square area </h2>
+
+<script>
+      function algoritmo() {
+        var s1 = document.getElementById("s1").value;
+        var s2  = document.getElementById("s2").value;
+        if (s1 == s2) {
+        var ts = s1*s2;
+        document.getElementById("TS").innerHTML = "Square Area: <strong>" + ts + " Unit" + "</strong>";
+        }
+        else {
+        alert("In a square side 1 must be iguals side 2");
+        }
+      }
+    </script>
+     
+    <label for="s1">Side 1: </label>
+    <input id="s1" type="number"><br>
+    <label for="s2">Side 2: </label>
+    <input id="s2" type="number"><br>
+    <button onclick="algoritmo()">Calculate</button>
+    <div id="TS"></div>
+    <div id="extra">
+    <br>
+</div>
+
+<div class="rectangle"></div>
+<br>
+&#x1F447<br>
+<h2> Rectangle area </h2>
+
+<script>
+      function algoritmo1() {
+        var rs1 = document.getElementById("rs1").value;
+        var rs2  = document.getElementById("rs2").value;
+        var rts = rs1*rs2;
+        document.getElementById("RTS").innerHTML = "Rectangle Area: <strong>" + rts + " Unit" + "</strong>";
+      }
+    </script>
+     
+    <label for="rs1">Side 1: </label>
+    <input id="rs1" type="number"><br>
+    <label for="rs2">Side 2: </label>
+    <input id="rs2" type="number"><br>
+    <button onclick="algoritmo1()">Calculate</button>
+    <div id="RTS"></div>
+    <div id="extra">
+    <br>
+
+<div class="parallelogram"></div>
+<br>
+&#x1F447<br>
+<h2> Parallelogram area </h2>
+<script>
+      function algoritmo2() {
+        var pw = document.getElementById("pw").value;
+        var ph = document.getElementById("ph").value;
+        var ps = pw*ph;
+        document.getElementById("PS").innerHTML = "Parallelogram Area: <strong>" + ps + " Unit" + "</strong>";
+      }
+    </script>
+     
+    <label for="pw">Width: </label>
+    <input id="pw" type="number"><br>
+    <label for="ph"> Height of the Parallelogram: </label>
+    <input id="ph" type="number"><br>
+    <button onclick="algoritmo2()">Calculate</button>
+    <div id="PS"></div>
+    <div id="extra">
+    <br>
+
+
+<div class="trapezoid"></div>
+<br>
+&#x1F447<br>
+<h2> Trapezoid area </h2>
+<script>
+      function algoritmo3() {
+        var ts1 = document.getElementById("ts1").value;
+        var ts2 = document.getElementById("ts2").value;
+        var th = document.getElementById("th").value;
+        var ts3 = ts1*1;
+        var ts4 = ts2*1; 
+        var trs = (ts3 + ts4)*th/2;
+        document.getElementById("TRS").innerHTML = "Trapezoid Area: <strong>" + trs + " Unit" + "</strong>";
+      }
+    </script>
+     
+    <label for="ts1">Side 1: </label>
+    <input id="ts1" type="number"><br>
+    <label for="ts2">Side 2: </label>
+    <input id="ts2" type="number"><br>
+    <label for="th">Height of the Trapezoid: </label>
+    <input id="th" type="number"><br>
+    <button onclick="algoritmo3()">Calculate</button>
+    <div id="TRS"></div>
+    <div id="extra">
+    <br>
+
+
+<div class="triangle-up">
+<div class="inner-triangle"></div>
+</div>
+<br>
+&#x1F447<br>
+<h2> Triangle area </h2>
+<script>
+      function algoritmo4() {
+        var be = document.getElementById("be").value;
+        var tgh = document.getElementById("tgh").value; 
+        var tgs = be*tgh/2;
+        document.getElementById("TGS").innerHTML = "Triangle Area: <strong>" + tgs + " Unit" + "</strong>";
+      }
+    </script>
+     
+    <label for="be"> Base of the Triangle: </label>
+    <input id="be" type="number"><br>
+    <label for="tgh"> Height of the triangle: </label>
+    <input id="tgh" type="number"><br>
+    <button onclick="algoritmo4()">Calculate</button>
+    <div id="TGS"></div>
+    <div id="extra">
+    <br>
+
+<div class="circleBase circle"></div>
+</div>
+<br>
+&#x1F447<br>
+<h2> Circle area </h2>
+<script>
+      function algoritmo5() {
+        var rd = document.getElementById("rd").value; 
+        var ccs = (3.14159265358979323846/1)*Math.pow(rd, 2) ;
+        document.getElementById("CSS").innerHTML = "Circle Area: <strong>" + ccs + " Unit" + "</strong>";
+      }
+    </script>
+     
+    <label> Pi = 3,14159265358979323846: </label><br>
+    <label for="rd"> Radius of the Circle: </label>
+    <input id="rd" type="number"><br>
+    <button onclick="algoritmo5()">Calculate</button>
+    <div id="CSS"></div>
+    <div id="extra">
+    <br>
+
+
+<div class="ellipse"></div>
+</div>
+<br>
+&#x1F447<br>
+<h2> Ellipse area </h2>
+<script>
+      function algoritmo6() {
+        var a = document.getElementById("a").value;
+        var b = document.getElementById("b").value; 
+        var es = (3.14159265358979323846/1)*a*b;
+        document.getElementById("ES").innerHTML = "Ellipse Area: <strong>" + es + " Unit" + "</strong>";
+      }
+    </script>
+     
+    <label> Pi = 3,14159265358979323846: </label><br>
+    <label for="a"> Half the width: </label>
+    <input id="a" type="number"><br>
+    <label for="b"> Half the height: </label>
+    <input id="b" type="number"><br>
+    <button onclick="algoritmo6()">Calculate</button>
+    <div id="ES"></div>
+    <div id="extra">
+    <br>
+</section>
+</div>
+
+<div id="Volume" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+  <section>
+
+  <div class="mainDiv">
+  <div class="squarex"></div>
+  <div class="squarex2"></div>
+  <div class="squarex3"></div>
+</div><br>
+&#x1F447<br>
+<h2>Volume Cube</h2>
+    <script>
+
+    function algoritmo7(){
+      var sc1=document.getElementById("sc1").value;
+      var sc2=document.getElementById("sc2").value;
+      var sc3=document.getElementById("sc3").value;
+      var spvc=(sc1*sc2*sc3);
+      if (sc1==sc2 && sc2==sc3){
+      document.getElementById("SPVC").innerHTML="Volume Cube:<strong>" + spvc + " Unit" + "<strong>";
+ }
+      else{
+     alert("In a Cube Side1, Side2 and Side3 must be iqual");
+ }
+}
+     </script>
+
+      <label for="sc1"> Side 1:</label>
+      <input id="sc1" type "number"><br>
+      <label for="sc2"> Side 2:</label>
+      <input id="sc2" type "number"><br>
+      <label for="sc3"> Side 3:</label>
+      <input id="sc3" type "number"><br>
+      <button onclick="algoritmo7()">Calculate</button>
+      <div id="SPVC"></div>
+      <div id="extra"></div><br>
+
+<div id="cubetop"></div>
+<div id="cubeface"></div>
+<div id="cuberight"></div><br>
+<pre>
+
+
+
+
+
+</pre>
+&#x1F447<br>
+<h2>Volume Cuboide</h2>
+    <script>
+
+    function algoritmo8(){
+      var scb1=document.getElementById("scb1").value;
+      var scb2=document.getElementById("scb2").value;
+      var hcb=document.getElementById("hcb").value;
+      var spcb=(scb1*scb2*hcb);
+      document.getElementById("SPCB").innerHTML="Volume Cuboide:<strong>" + spcb + " Unit" + "<strong>";
+ }
+     </script>
+
+      <label for="scb1"> Side 1:</label>
+      <input id="scb1" type "number"><br>
+      <label for="scb2"> Side 2:</label>
+      <input id="scb2" type "number"><br>
+      <label for="hcb"> High of Cuboide:</label>
+      <input id="hcb" type "number"><br>
+      <button onclick="algoritmo8()">Calculate</button>
+      <div id="SPCB"></div>
+      <div id="extra"></div><br>
+
+<div class="tank">
+    <div class="bottom"></div>
+    <div class="middle"></div>
+    <div class="top"></div>  
+</div><br>
+<pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+&#x1F447<br>
+<h2>Volume Cylinder</h2>
+    <script>
+      function algoritmo9() {
+        var rcr = document.getElementById("rcr").value;
+        var hcr = document.getElementById("hcr").value; 
+        var squarercr=Math.pow(rcr,2);
+        var Pic=3.14159265358979323846;
+        var csp = (Pic*squarercr)*(hcr/1);
+        document.getElementById("CSP").innerHTML = "Volume cylinder: <strong>" + csp + " Unit" + "</strong>";
+      }
+    </script>
+     
+    <label> Pi = 3,14159265358979323846: </label><br>
+    <label for="rcr">Radius of the cylinder: </label>
+    <input id="rcr" type="number"><br>
+    <label for="hcr">High of the cylinder: </label>
+    <input id="hcr" type="number"><br>
+    <button onclick="algoritmo9()">Calculate</button>
+    <div id="CSP"></div>
+    <div id="extra">
+    <br>
+
+<div class="cone"></div><br>
+&#x1F447<br>
+<h2>Volume Cone</h2>
+
+<script>
+  function algorithm10(){
+   var rcne=document.getElementById("rcne").value;
+   var hcne=document.getElementById("hcne").value;
+   var squarerrcne=Math.pow(rcne,2);
+   var Pi=3.14159265358979323846;
+   var scne=1/3*(Pi*squarerrcne*hcne);
+   document.getElementById("SCNE").innerHTML="Volume Cone: <strong>" + scne + " Unit" + "</strong>";
+}
+</script>
+   
+   <label>Pi=3,14159265358979323846</label><br>
+   <label for="rcne">Radius at the base of cone:</label>
+   <input id="rcne" type="number"><br>
+   <label for="hcne">Height of the cone:</label>  
+   <input id="hcne" type="number"><br>
+   <button onclick="algorithm10()">Calculate</button>
+   <div id="SCNE"></div>
+   <div id="extra"><br>
+
+<div class="sphere"></div><br>
+&#x1F447<br>
+<h2>Volume Sphere</h2>
+
+<script>
+  function algorithm11(){
+   var rsph=document.getElementById("rsph").value;
+   var cubersph=Math.pow(rsph,3);
+   var Pi=3.14159265358979323846;
+   var ssph=4/3*(Pi*cubersph);
+   document.getElementById("SSPH").innerHTML="Volume Sphere: <strong>" + ssph + " Unit" + "</strong>";
+}
+</script>
+   
+   <label>Pi=3,14159265358979323846</label><br>
+   <label for="rsph">Radius of the esphere:</label>
+   <input id="rsph" type="number"><br>
+   <button onclick="algorithm11()">Calculate</button>
+   <div id="SSPH"></div>
+   <div id="extra"><br>
+
+</section>
+</div>
+
+<div id="Interaction" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+  <section>
+<!--Interactive cube-->
+<div class="container">
+	<div class="cube">
+		<div style="--x:-1; --y:0;">
+			<span style="--i:3;"></span>
+			<span style="--i:2;"></span>
+			<span style="--i:1;"></span>
+		</div>
+		<div style="--x:0; --y:0;">
+			<span style="--i:3;"></span>
+			<span style="--i:2;"></span>
+			<span style="--i:1;"></span>
+		</div>
+		<div style="--x:1; --y:0;">
+			<span style="--i:3;"></span>
+			<span style="--i:2;"></span>
+			<span style="--i:1;"></span>
+		</div>
+	</div>
+	<div class="cube">
+		<div style="--x:-1; --y:0;">
+			<span style="--i:3;"></span>
+			<span style="--i:2;"></span>
+			<span style="--i:1;"></span>
+		</div>
+		<div style="--x:0; --y:0;">
+			<span style="--i:3;"></span>
+			<span style="--i:2;"></span>
+			<span style="--i:1;"></span>
+		</div>
+		<div style="--x:1; --y:0;">
+			<span style="--i:3;"></span>
+			<span style="--i:2;"></span>
+			<span style="--i:1;"></span>
+		</div>
+	</div>
+	<div class="cube">
+		<div style="--x:-1; --y:0;">
+			<span style="--i:3;"></span>
+			<span style="--i:2;"></span>
+			<span style="--i:1;"></span>
+		</div>
+		<div style="--x:0; --y:0;">
+			<span style="--i:3;"></span>
+			<span style="--i:2;"></span>
+			<span style="--i:1;"></span>
+		</div>
+		<div style="--x:1; --y:0;">
+			<span style="--i:3;"></span>
+			<span style="--i:2;"></span>
+			<span style="--i:1;"></span>
+		</div>
+	</div>
+</div>
+
+
+<h2>By clicking on the button below you can see an interactive cube</h2>
+<button id='btn-div'>Show/Hide</button>
+<br>
+<script>
+var btn = document.getElementById('btn-div');
+var container = document.querySelector('.container');
+btn.addEventListener('click', function() {
+    
+  if(container.style.display === 'block') {
+      container.style.display = 'none';
+  } else {
+      container.style.display = 'block';
+  }
+});
+</script>
+</div>
+</div>
+
+<script>
+function openSpace(evt, spaceName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(spaceName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+   
+</body>
+</html>
